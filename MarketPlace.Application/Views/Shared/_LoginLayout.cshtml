@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MarketPlace.Application</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MarketPlace.Application.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-5" style="padding-left:5%; padding-top:5%">
+            @RenderBody()
+        </div>
+       <div class="col-md-7" style="padding-top:13%; padding-left:3%">
+           <h1>The Market Place</h1>
+           <h5>BUY AND SELL PRODUCTS HERE NO MATTER THE DISTANCE</h5>
+           <button class="btn btn-info" style="background-color:transparent; color:black; border:1px solid black">Learn More &raquo;</button>
+           <br /><br />
+           <div style="color:black; font-size:12px; background-color:whitesmoke; border:1px solid whitesmoke; width:60%; padding:5px">
+                FOR HELP KINDLY CALL THE FOLLOWING NUMBERS:<br />
+                +2347068352430, +2348025316751, +44 7471 240940,<br />
+                08077440128, 08077440136, 08077440139
+           </div>
+       </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
