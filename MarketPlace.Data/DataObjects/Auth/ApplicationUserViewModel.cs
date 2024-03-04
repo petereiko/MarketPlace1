@@ -9,6 +9,7 @@ namespace MarketPlace.Data.DataObjects.Auth
 {
     public class ApplicationUserViewModel
     {
+        public string Email { get; set; }
         public string ReferralLink { get; set; }
         public string MyReferralCode { get; set; }
         public string WhoReferredMeCode { get; set; }

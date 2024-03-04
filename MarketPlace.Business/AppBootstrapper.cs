@@ -14,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MarketPlace.Data;
+using MarketPlace.Business.Modules.KycModule;
 
 namespace MarketPlace.Business
 {
@@ -21,6 +22,7 @@ namespace MarketPlace.Business
     {
         public static void InitServices(this IServiceCollection services)
         {
+            
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 
@@ -55,6 +57,7 @@ namespace MarketPlace.Business
             services.AddScoped<ISmsService, SmsService>();
             services.AddScoped<IEmailService, EmailService>();
             services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<IKycService, KycService>();
             //services.AddTransient<ICountry, CountryServices>();
 
 
