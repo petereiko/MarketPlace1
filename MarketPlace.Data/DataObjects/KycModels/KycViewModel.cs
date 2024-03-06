@@ -15,9 +15,13 @@ namespace MarketPlace.Data.DataObjects.KycModels
         public string PassportName { get; set; }
         public string DateOfBirth { get; set; }
         public string Phone { get; set; }
-        public string State { get; set; }
+        public long? StateId { get; set; }
+        public string StateName { get; set; }
         public string City { get; set; }
-        public string Country { get; set; }
+        public long? CountryId { get; set; }
+        public string CountryName { get; set; }
+        public long? ContinentId { get; set; }
+        public string ContinentName { get; set; }
         public string ResidentialAddress { get; set; }
         public string UserId { get; set; }
         public long Id { get; set; }

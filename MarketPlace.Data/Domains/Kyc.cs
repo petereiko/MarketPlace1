@@ -15,9 +15,20 @@ namespace MarketPlace.Data.Domains
         public string PassportName { get; set; }
         public string DateOfBirth { get; set; }
         public string Phone { get; set; }
-        public string State { get; set; }
+
+        [ForeignKey("StateId")]
+        public long? StateId { get; set; }
+        public virtual State State { get; set; }
         public string City { get; set; }
-        public string Country { get; set; }
+
+        [ForeignKey("CountryId")]
+        public long? CountryId { get; set; }
+        public virtual Country Country { get; set; }
+
+        [ForeignKey("ContinentId")]
+        public long? ContinentId { get; set; }
+        public virtual Continent Continent { get; set; }
+        
         public string ResidentialAddress { get; set; }
 
         [ForeignKey("UserId")]

@@ -1,34 +1,52 @@
 ﻿@model MarketPlace.Data.DataObjects.KycModels.KycViewModel
+@inject IUrlHelper _urlHelper;
+@inject IHttpContextAccessor _httpContext;
 @{
     ViewData["Title"] = "Profile";
+    var context = _httpContext.HttpContext;
+    var baseUrl = $"{context.Request.Scheme}://{context.Request.Host}{context.Request.PathBase}";
+
+
 }
 
 <section style="background-color: #eee;">
     <div class="container py-5">
         @* <div class="row">
-            <div class="col">
-                <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
-                    <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">User</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-                    </ol>
-                </nav>
-            </div>
+        <div class="col">
+        <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+        <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">User</a></li>
+        <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+        </ol>
+        </nav>
+        </div>
         </div> *@
 
         <div class="row">
             <div class="col-lg-4">
                 <div class="card mb-4">
                     <div class="card-body text-center">
-                        <img src="@Url.Content("~/images/")" alt="avatar"
-                             class="rounded-circle img-fluid" style="width: 150px;">
+                        @if (!string.IsNullOrEmpty(Model.PassportName))
+                        {
+                            var imagePath = $"{baseUrl}/Images/" + Model.PassportName;
+                            <img id="imgPassport" src="@imagePath" alt="avatar"
+                                 class="rounded-circle img-fluid" style="width: 150px;">
+                        }
+                        else
+                        {
+                            <img id="imgPassport" src="" alt="Kindly upload your passport"
+                                 class="rounded-circle img-fluid" style="width: 150px;">
+                        }
+                        <center>
+                            <input type="file" style="width:70%; font-size:10px" id="passportFile" class="form-control" />
+                        </center>
                         <h5 class="my-3">@Model.FirstName @Model.LastName</h5>
                         <p class="text-muted mb-1">@Model.ResidentialAddress</p>
                         <p class="text-muted mb-4">@Model.City</p>
                         <div class="d-flex justify-content-center mb-2">
-                            <button type="button" class="btn btn-primary">@Model.State</button>
-                            <button type="button" class="btn btn-outline-primary ms-1">@Model.Country</button>
+                            <button type="button" class="btn btn-primary">@Model.StateName</button>
+                            <button type="button" class="btn btn-outline-primary ms-1">@Model.ContinentName</button>
                         </div>
                     </div>
                 </div>
@@ -48,12 +66,12 @@
                                 <p class="mb-0">@Model.User.Email</p>
                             </li>
                             @* <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
-                                <p class="mb-0">mdbootstrap</p>
+                            <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
+                            <p class="mb-0">mdbootstrap</p>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
-                                <p class="mb-0">mdbootstrap</p>
+                            <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
+                            <p class="mb-0">mdbootstrap</p>
                             </li> *@
                         </ul>
                     </div>
@@ -67,7 +85,7 @@
                                 <p class="mb-0">Full Name</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">@Model.FirstName @Model.LastName</p>
+                                <p class="text-muted mb-0"><input type="text" value="@Model.FirstName @Model.LastName" readonly class="form-control" /></p>
                             </div>
                         </div>
                         <hr>
@@ -76,7 +94,7 @@
                                 <p class="mb-0">Email</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">@Model.User.Email</p>
+                                <p class="text-muted mb-0"><input type="email" value="@Model.User.Email" class="form-control" readonly /> </p>
                             </div>
                         </div>
                         <hr>
@@ -85,101 +103,158 @@
                                 <p class="mb-0">Phone</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">@Model.Phone</p>
+                                <p class="text-muted mb-0"><input type="text" value="@Model.Phone" readonly class="form-control" /></p>
                             </div>
                         </div>
-                        <hr>
+                        <hr />
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Mobile</p>
+                                <p class="mb-0">Continent</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">@Model.Phone</p>
+                                <p class="text-muted mb-0">
+                                    <select id="state" class="form-control" asp-for="ContinentId">
+                                        <option>Select Continent</option>
+                                    </select>
+                                </p>
                             </div>
                         </div>
-                        <hr>
+                        <hr />
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Country</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">
+                                    <select id="state" class="form-control" asp-for="CountryId">
+                                        <option>Select Country</option>
+                                    </select>
+                                </p>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">State</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">
+                                    <select id="state" class="form-control" asp-for="StateId">
+                                        <option>Select State</option>
+                                    </select>
+                                </p>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">City</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0"><input id="city" type="text" value="@Model.City" class="form-control" /></p>
+                            </div>
+                        </div>
+                        <hr />
                         <div class="row">
                             <div class="col-sm-3">
                                 <p class="mb-0">Address</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">@Model.ResidentialAddress</p>
+                                <p class="text-muted mb-0"><textarea id="address" class="form-control">@Model.ResidentialAddress</textarea></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">
+
+                                </p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">
+                                    <button class="btn btn-primary" onclick="SaveProfile(this)">Save Changes</button>
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
-                @* <div class="row">
-                    <div class="col-md-6">
-                        <div class="card mb-4 mb-md-0">
-                            <div class="card-body">
-                                <p class="mb-4">
-                                    <span class="text-primary font-italic me-1">assigment</span> Project Status
-                                </p>
-                                <p class="mb-1" style="font-size: .77rem;">Web Design</p>
-                                <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
-                                         aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
-                                <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
-                                         aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
-                                <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
-                                         aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
-                                <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
-                                         aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
-                                <div class="progress rounded mb-2" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
-                                         aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card mb-4 mb-md-0">
-                            <div class="card-body">
-                                <p class="mb-4">
-                                    <span class="text-primary font-italic me-1">assigment</span> Project Status
-                                </p>
-                                <p class="mb-1" style="font-size: .77rem;">Web Design</p>
-                                <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
-                                         aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
-                                <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
-                                         aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
-                                <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
-                                         aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
-                                <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
-                                         aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
-                                <div class="progress rounded mb-2" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
-                                         aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> *@
             </div>
         </div>
     </div>
 </section>
+
+
+@section Scripts {
+    <script>
+
+        function SaveProfile(e) {
+            let obj = {
+                "City": $('#city').val(),
+                "State": $('#state').val(),
+                "Country": $('#country').val(),
+                "ResidentialAddress": $('#address').val()
+            };
+            console.log(obj);
+            $.ajax({
+                url: '@Url.Action("SaveProfile", "Home")',
+                method: 'post',
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                data: obj,
+                success: function (response) {
+                    swal({
+                        title: "Good job!",
+                        text: "You clicked the button!",
+                        icon: "success",
+                        button: "Ok!",
+                    });
+                },
+                error: function (err) {
+                    swal({
+                        title: "Oops!",
+                        text: "An error occurred while trying to save your entries",
+                        icon: "error",
+                        button: "Error",
+                    });
+                }
+            });
+        }
+
+
+        const fileInput = document.getElementById('passportFile');
+        const previewImg = document.getElementById('imgPassport');
+
+        fileInput.addEventListener('change', function (event) {
+            const file = event.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.addEventListener('load', function () {
+                    previewImg.src = reader.result;
+                });
+
+                reader.readAsDataURL(file);
+
+                const formData = new FormData();
+                formData.append('file', file);
+
+                // Create AJAX request
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '@Url.Action("UploadPassport", "Home")', true);
+                xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        console.log('File uploaded successfully');
+                    } else {
+                        console.error('File upload failed');
+                    }
+                };
+
+                xhr.send(formData);
+            }
+        });
+    </script>
+}
 

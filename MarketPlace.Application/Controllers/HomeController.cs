@@ -30,6 +30,21 @@ namespace MarketPlace.Application.Controllers
             return View(kyc);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> UploadPassport(IFormFile file)
+        {
+            var result = await _kycService.UploadPassport(file);
+            return Json(result);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> SaveProfile(ProfileDto model)
+        {
+            var result = await _kycService.SaveProfile(model);
+            return Json(result);
+        }
+
         public IActionResult Privacy()
         {
             return View();
