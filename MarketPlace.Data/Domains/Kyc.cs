@@ -20,14 +20,6 @@ namespace MarketPlace.Data.Domains
         public long? StateId { get; set; }
         public virtual State State { get; set; }
         public string City { get; set; }
-
-        [ForeignKey("CountryId")]
-        public long? CountryId { get; set; }
-        public virtual Country Country { get; set; }
-
-        [ForeignKey("ContinentId")]
-        public long? ContinentId { get; set; }
-        public virtual Continent Continent { get; set; }
         
         public string ResidentialAddress { get; set; }
 

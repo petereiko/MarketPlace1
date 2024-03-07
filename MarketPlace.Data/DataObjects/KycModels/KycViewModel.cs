@@ -5,6 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using MarketPlace.Data.DataObjects.Common;
+
 
 namespace MarketPlace.Data.DataObjects.KycModels
 {
@@ -15,16 +18,14 @@ namespace MarketPlace.Data.DataObjects.KycModels
         public string PassportName { get; set; }
         public string DateOfBirth { get; set; }
         public string Phone { get; set; }
-        public long? StateId { get; set; }
-        public string StateName { get; set; }
+        public IdName State { get; set; }
         public string City { get; set; }
-        public long? CountryId { get; set; }
-        public string CountryName { get; set; }
-        public long? ContinentId { get; set; }
-        public string ContinentName { get; set; }
+        public IdName Country { get; set; }
         public string ResidentialAddress { get; set; }
         public string UserId { get; set; }
         public long Id { get; set; }
         public ApplicationUserViewModel User { get; set; }
+
+        public List<SelectListItem> Countries { get; set; } = new List<SelectListItem>();
     }
 }

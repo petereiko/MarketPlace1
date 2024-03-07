@@ -4,6 +4,7 @@ using MarketPlace.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MarketPlace.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240307021834_ProductCategoryToProductTypes")]
+    partial class ProductCategoryToProductTypes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -147,6 +150,68 @@ namespace MarketPlace.Data.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("MarketPlace.Data.Domains.Country", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("CountryCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("IPAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NationalCurrency")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nationality")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.Property<long?>("StateId")
+                        .HasColumnType("bigint");
+
+                    b.Property<decimal?>("VatRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StateId");
+
+                    b.ToTable("Countries");
+                });
+
             modelBuilder.Entity("MarketPlace.Data.Domains.Kyc", b =>
                 {
                     b.Property<long>("Id")
@@ -157,6 +222,9 @@ namespace MarketPlace.Data.Migrations
 
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("CountryId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -209,6 +277,8 @@ namespace MarketPlace.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
 
                     b.HasIndex("StateId");
 
@@ -267,6 +337,9 @@ namespace MarketPlace.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
+                    b.Property<long?>("CountryId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -315,6 +388,8 @@ namespace MarketPlace.Data.Migrations
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
 
                     b.HasIndex("ProductBrandId");
 
@@ -728,8 +803,19 @@ namespace MarketPlace.Data.Migrations
                     b.HasDiscriminator().HasValue("ApplicationUserRole");
                 });
 
+            modelBuilder.Entity("MarketPlace.Data.Domains.Country", b =>
+                {
+                    b.HasOne("MarketPlace.Data.Domains.State", null)
+                        .WithMany("Countries")
+                        .HasForeignKey("StateId");
+                });
+
             modelBuilder.Entity("MarketPlace.Data.Domains.Kyc", b =>
                 {
+                    b.HasOne("MarketPlace.Data.Domains.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId");
+
                     b.HasOne("MarketPlace.Data.Domains.State", "State")
                         .WithMany()
                         .HasForeignKey("StateId");
@@ -738,6 +824,8 @@ namespace MarketPlace.Data.Migrations
                         .WithMany()
                         .HasForeignKey("UserId");
 
+                    b.Navigation("Country");
+
                     b.Navigation("State");
 
                     b.Navigation("User");
@@ -745,6 +833,10 @@ namespace MarketPlace.Data.Migrations
 
             modelBuilder.Entity("MarketPlace.Data.Domains.Product", b =>
                 {
+                    b.HasOne("MarketPlace.Data.Domains.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId");
+
                     b.HasOne("MarketPlace.Data.Domains.ProductBrand", null)
                         .WithMany("Products")
                         .HasForeignKey("ProductBrandId");
@@ -768,6 +860,8 @@ namespace MarketPlace.Data.Migrations
                     b.HasOne("MarketPlace.Data.Domains.State", "State")
                         .WithMany()
                         .HasForeignKey("StateId");
+
+                    b.Navigation("Country");
 
                     b.Navigation("ProductCategory");
 
@@ -887,6 +981,8 @@ namespace MarketPlace.Data.Migrations
 
             modelBuilder.Entity("MarketPlace.Data.Domains.State", b =>
                 {
+                    b.Navigation("Countries");
+
                     b.Navigation("States");
                 });
 #pragma warning restore 612, 618

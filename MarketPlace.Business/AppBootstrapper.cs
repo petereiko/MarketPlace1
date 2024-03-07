@@ -15,6 +15,8 @@ using System.Text;
 using System.Threading.Tasks;
 using MarketPlace.Data;
 using MarketPlace.Business.Modules.KycModule;
+using MarketPlace.Business.Modules.Location;
+using MarketPlace.Business.Modules.Purchase;
 
 namespace MarketPlace.Business
 {
@@ -58,10 +60,10 @@ namespace MarketPlace.Business
             services.AddScoped<IEmailService, EmailService>();
             services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<IKycService, KycService>();
-            //services.AddTransient<ICountry, CountryServices>();
+            services.AddTransient<ILocationService, LocationService>();
 
 
-            //services.AddTransient<IEmailing, EmailingServices>();
+            services.AddTransient<IBuyService, BuyService>();
             //services.AddTransient<IActivityLog, ActivityLogServices>();
             //services.AddTransient<IFileHandler, FileHandlerServices>();
 

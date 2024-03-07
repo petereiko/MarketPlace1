@@ -39,7 +39,7 @@ namespace MarketPlace.Application.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> SaveProfile(ProfileDto model)
+        public async Task<IActionResult> SaveProfile([FromBody]ProfileDto model)
         {
             var result = await _kycService.SaveProfile(model);
             return Json(result);

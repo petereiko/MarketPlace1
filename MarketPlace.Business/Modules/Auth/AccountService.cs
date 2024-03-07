@@ -100,14 +100,13 @@ namespace MarketPlace.Business.Modules.Auth
                                 PassportName = kyc.PassportName,
                                 Phone = kyc.Phone,
                                 ResidentialAddress = kyc.ResidentialAddress,
-                                StateId = kyc.State.Id,
-                                CountryId = kyc.Country.Id,
-                                ContinentId = kyc.Continent.Id,
-                                ContinentName = kyc.Continent.Name,
-                                CountryName = kyc.Continent.Name,
+                                State = new ()
+                                {
+                                     Id= kyc.State==null?0: kyc.State.Id,
+                                      Name=kyc.State==null?"": kyc.State.Name
+                                },
                                 FirstName = kyc.FirstName,
                                 LastName = kyc.LastName,
-                                StateName = kyc.State.Name,
                                 UserId = kyc.UserId
                             }
                         },

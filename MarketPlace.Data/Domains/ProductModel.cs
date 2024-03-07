@@ -9,12 +9,17 @@ namespace MarketPlace.Data.Domains
 {
     public class ProductModel:BaseObject
     {
-        [ForeignKey("BrandId")]
+        public ProductModel()
+        {
+            Products = new HashSet<Product>();
+        }
+        [ForeignKey("ProductBrandId")]
         public long? ProductBrandId { get; set; }
 
         public virtual ProductBrand ProductBrand { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
+        public virtual ICollection<Product> Products { get; set; } = new HashSet<Product>();
 
     }
 }

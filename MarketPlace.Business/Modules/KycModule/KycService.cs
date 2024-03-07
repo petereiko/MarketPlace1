@@ -3,6 +3,7 @@ using MarketPlace.Data;
 using MarketPlace.Data.DataObjects.ApplicationConfig;
 using MarketPlace.Data.DataObjects.KycModels;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -34,21 +35,19 @@ namespace MarketPlace.Business.Modules.KycModule
         public async Task<KycViewModel> Get()
         {
             KycViewModel model = null;
-            var kyc =  await _context.Kycs.Include(x=>x.User).AsNoTracking().FirstOrDefaultAsync(x => x.UserId == _authUser.UserId);
+            var kyc =  await _context.Kycs.Include(x=>x.User).Include(x=>x.State).AsNoTracking().FirstOrDefaultAsync(x => x.UserId == _authUser.UserId);
             if (kyc != null) 
             {
-                var user = kyc.User;//await _context.ApplicationUsers.AsNoTracking().FirstOrDefaultAsync(x => x.Id == _authUser.UserId);
+                var user = kyc.User;
 
                 model = new()
                 {
                     City = kyc.City,
-                    CountryName = kyc.Country.Name,
                     DateOfBirth = kyc.DateOfBirth,
                     Id = kyc.Id,
                     PassportName = kyc.PassportName,
                     Phone = kyc.Phone,
                     ResidentialAddress = kyc.ResidentialAddress,
-                    StateName = kyc.State.Name,
                     User = new Data.DataObjects.Auth.ApplicationUserViewModel
                     {
                         CreatedDate = user.CreatedDate,
@@ -65,6 +64,12 @@ namespace MarketPlace.Business.Modules.KycModule
                     LastName = kyc.LastName,
                     UserId = kyc.UserId
                 };
+                if (kyc.State != null)
+                    model.State = new()
+                    {
+                        Id = kyc.State.Id,
+                        Name = kyc.State.Name
+                    };
             }
             return model;
         }
@@ -117,14 +122,10 @@ namespace MarketPlace.Business.Modules.KycModule
                 {
                     if (!string.IsNullOrEmpty(model.City))
                         kyc.City = model.City.Trim();
-                    if (model.CountryId!=null)
-                        kyc.CountryId = model.CountryId;
                     if (!string.IsNullOrEmpty(model.ResidentialAddress))
                         kyc.ResidentialAddress = model.ResidentialAddress.Trim();
                     if (model.StateId!=null)
                         kyc.StateId = model.StateId;
-                    if (model.ContinentId != null)
-                        kyc.ContinentId = model.ContinentId;
                     kyc.LastModified = DateTime.Now;
                     kyc.ModifiedBy = _authUser.UserId;
                     await _context.SaveChangesAsync();

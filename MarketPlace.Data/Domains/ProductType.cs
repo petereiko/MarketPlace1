@@ -8,7 +8,13 @@ namespace MarketPlace.Data.Domains
 {
     public class ProductType:BaseObject
     {
-        public string Code { get; set; }
+        public ProductType()
+        {
+            Products = new HashSet<Product>();
+            ProductCategories = new HashSet<ProductCategory>();
+        }
         public string Name { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<ProductCategory> ProductCategories { get; set; }
     }
 }

@@ -3,6 +3,24 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Buy</h5>
+                    <p class="card-text">Buy a commodity. Call or Chat prospective Sellers here.</p>
+                    <a href="@Url.Action("Index","Buy")" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Sell</h5>
+                    <p class="card-text">Sell a commodity. Meet prospective Buyers here.</p>
+                    <a href="@Url.Action("Index","Sell")" class="btn btn-primary">Sell Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

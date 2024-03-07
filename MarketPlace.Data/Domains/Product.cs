@@ -23,13 +23,9 @@ namespace MarketPlace.Data.Domains
         public long? ProductTypeId { get; set; }
         public virtual ProductType ProductType { get; set; }
 
-        [ForeignKey("CountryId")]
-        public long? CountryId { get; set; }
-        public virtual Country Country { get; set; }
-
-        [ForeignKey("ContinentId")]
-        public long? ContinentId {  get; set; }
-        public virtual Continent Continent { get; set; }
+        [ForeignKey("ProductConditionId")]
+        public long? ProductConditionId { get; set; }
+        public virtual ProductCondition ProductCondition { get; set; }
 
         [ForeignKey("StateId")]
         public long? StateId { get; set; }

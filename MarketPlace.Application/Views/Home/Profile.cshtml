@@ -44,10 +44,6 @@
                         <h5 class="my-3">@Model.FirstName @Model.LastName</h5>
                         <p class="text-muted mb-1">@Model.ResidentialAddress</p>
                         <p class="text-muted mb-4">@Model.City</p>
-                        <div class="d-flex justify-content-center mb-2">
-                            <button type="button" class="btn btn-primary">@Model.StateName</button>
-                            <button type="button" class="btn btn-outline-primary ms-1">@Model.ContinentName</button>
-                        </div>
                     </div>
                 </div>
                 <div class="card mb-4 mb-lg-0">
@@ -107,31 +103,7 @@
                             </div>
                         </div>
                         <hr />
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p class="mb-0">Continent</p>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0">
-                                    <select id="state" class="form-control" asp-for="ContinentId">
-                                        <option>Select Continent</option>
-                                    </select>
-                                </p>
-                            </div>
-                        </div>
-                        <hr />
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p class="mb-0">Country</p>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0">
-                                    <select id="state" class="form-control" asp-for="CountryId">
-                                        <option>Select Country</option>
-                                    </select>
-                                </p>
-                            </div>
-                        </div>
+                        
                         <hr />
                         <div class="row">
                             <div class="col-sm-3">
@@ -139,9 +111,16 @@
                             </div>
                             <div class="col-sm-9">
                                 <p class="text-muted mb-0">
-                                    <select id="state" class="form-control" asp-for="StateId">
-                                        <option>Select State</option>
-                                    </select>
+                                    @if (Model.State!=null)
+                                    {
+                                        <input type="text" readonly class="form-control" value="@Model.State.Name" />
+                                    }
+                                    else
+                                    {
+                                        <select class="form-control" asp-for="State.Id">
+                                            <option>Select State</option>
+                                        </select>
+                                    }
                                 </p>
                             </div>
                         </div>
@@ -187,20 +166,46 @@
 @section Scripts {
     <script>
 
+        function FetchStates(e) {
+            console.log(e.id);
+            let url = '@Url.Action("FetchStates", "Location")?CountryId=' + e.value;
+            console.log(url);
+            if (e.value != '') {
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    dataType: 'JSON',
+                    success: function (response) {
+                        console.log(response);
+                        let html = '<option>Select State</option>'
+                        $.each(response, function (i, v) {
+                            html += '<option value="' + v.id + '">' + v.name + '</option>';
+                        });
+                        $('#State_Id').html(html);
+                    },
+                    error: function (err) {
+
+                    }
+                });
+            }
+
+        }
+
         function SaveProfile(e) {
             let obj = {
                 "City": $('#city').val(),
-                "State": $('#state').val(),
-                "Country": $('#country').val(),
+                "StateId": $('#State_Id').val(),
+                "CountryId": $('#Country_Id').val(),
                 "ResidentialAddress": $('#address').val()
             };
+
             console.log(obj);
             $.ajax({
                 url: '@Url.Action("SaveProfile", "Home")',
                 method: 'post',
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
-                data: obj,
+                data: JSON.stringify(obj),
                 success: function (response) {
                     swal({
                         title: "Good job!",
