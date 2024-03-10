@@ -48,7 +48,7 @@ namespace MarketPlace.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            //ModelBuilderExtension.Seed(builder);
+            ModelBuilderExtension.Seed(builder);
         }
 
     }

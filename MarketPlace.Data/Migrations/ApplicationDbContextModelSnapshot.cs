@@ -418,6 +418,53 @@ namespace MarketPlace.Data.Migrations
                     b.HasIndex("ProductTypeId");
 
                     b.ToTable("ProductCategories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 192, DateTimeKind.Local).AddTicks(9779),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Edible"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 193, DateTimeKind.Local).AddTicks(4917),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Mechanical"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 193, DateTimeKind.Local).AddTicks(9903),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Electrical"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 194, DateTimeKind.Local).AddTicks(3921),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Wooden"
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 194, DateTimeKind.Local).AddTicks(9938),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Ceramic"
+                        });
                 });
 
             modelBuilder.Entity("MarketPlace.Data.Domains.ProductCondition", b =>
@@ -460,6 +507,44 @@ namespace MarketPlace.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProductConditions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 189, DateTimeKind.Local).AddTicks(9879),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Brand New"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 191, DateTimeKind.Local).AddTicks(475),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Foreign Use"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 191, DateTimeKind.Local).AddTicks(8685),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Fairly Used"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 192, DateTimeKind.Local).AddTicks(4163),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Really Used"
+                        });
                 });
 
             modelBuilder.Entity("MarketPlace.Data.Domains.ProductModel", b =>
@@ -552,6 +637,134 @@ namespace MarketPlace.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProductTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 181, DateTimeKind.Local).AddTicks(9315),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Vehicles"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 182, DateTimeKind.Local).AddTicks(6849),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Properties"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 183, DateTimeKind.Local).AddTicks(4791),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Mobile Gadgets"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 184, DateTimeKind.Local).AddTicks(1187),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Electronics"
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 184, DateTimeKind.Local).AddTicks(7592),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Home Appliances"
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 185, DateTimeKind.Local).AddTicks(4719),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Cosmetics/Beauty"
+                        },
+                        new
+                        {
+                            Id = 7L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 185, DateTimeKind.Local).AddTicks(9702),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Fashion"
+                        },
+                        new
+                        {
+                            Id = 8L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 186, DateTimeKind.Local).AddTicks(4108),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Sports"
+                        },
+                        new
+                        {
+                            Id = 9L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 186, DateTimeKind.Local).AddTicks(8647),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Outdoor Equipment"
+                        },
+                        new
+                        {
+                            Id = 10L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 187, DateTimeKind.Local).AddTicks(3724),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Jobs"
+                        },
+                        new
+                        {
+                            Id = 11L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 187, DateTimeKind.Local).AddTicks(9655),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Babies/Toys"
+                        },
+                        new
+                        {
+                            Id = 12L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 188, DateTimeKind.Local).AddTicks(5100),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Pets"
+                        },
+                        new
+                        {
+                            Id = 13L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 189, DateTimeKind.Local).AddTicks(836),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Agriculture"
+                        },
+                        new
+                        {
+                            Id = 14L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 189, DateTimeKind.Local).AddTicks(4997),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Workman"
+                        });
                 });
 
             modelBuilder.Entity("MarketPlace.Data.Domains.State", b =>
@@ -561,9 +774,6 @@ namespace MarketPlace.Data.Migrations
                         .HasColumnType("bigint");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<long>("CountryId")
-                        .HasColumnType("bigint");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -597,14 +807,381 @@ namespace MarketPlace.Data.Migrations
                     b.Property<string>("StateCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long?>("StateId")
-                        .HasColumnType("bigint");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("StateId");
-
                     b.ToTable("States");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 111, DateTimeKind.Local).AddTicks(3733),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Akwa Ibom",
+                            StateCode = "01"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 112, DateTimeKind.Local).AddTicks(9634),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Anambra",
+                            StateCode = "02"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 113, DateTimeKind.Local).AddTicks(7482),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Bauchi",
+                            StateCode = "03"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 115, DateTimeKind.Local).AddTicks(3426),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Adamawa",
+                            StateCode = "04"
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 116, DateTimeKind.Local).AddTicks(7392),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Benue",
+                            StateCode = "05"
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 117, DateTimeKind.Local).AddTicks(6925),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Borno",
+                            StateCode = "06"
+                        },
+                        new
+                        {
+                            Id = 7L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 133, DateTimeKind.Local).AddTicks(9605),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Cross River",
+                            StateCode = "07"
+                        },
+                        new
+                        {
+                            Id = 8L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 135, DateTimeKind.Local).AddTicks(1604),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "FCT",
+                            StateCode = "08"
+                        },
+                        new
+                        {
+                            Id = 9L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 136, DateTimeKind.Local).AddTicks(308),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Delta",
+                            StateCode = "09"
+                        },
+                        new
+                        {
+                            Id = 10L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 136, DateTimeKind.Local).AddTicks(8039),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Imo",
+                            StateCode = "10"
+                        },
+                        new
+                        {
+                            Id = 11L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 137, DateTimeKind.Local).AddTicks(4136),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Kaduna",
+                            StateCode = "11"
+                        },
+                        new
+                        {
+                            Id = 12L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 138, DateTimeKind.Local).AddTicks(142),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Kano",
+                            StateCode = "12"
+                        },
+                        new
+                        {
+                            Id = 13L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 139, DateTimeKind.Local).AddTicks(639),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Katsina",
+                            StateCode = "13"
+                        },
+                        new
+                        {
+                            Id = 14L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 139, DateTimeKind.Local).AddTicks(6813),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Kwara",
+                            StateCode = "14"
+                        },
+                        new
+                        {
+                            Id = 15L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 140, DateTimeKind.Local).AddTicks(1318),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Lagos",
+                            StateCode = "15"
+                        },
+                        new
+                        {
+                            Id = 16L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 140, DateTimeKind.Local).AddTicks(5609),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Niger",
+                            StateCode = "16"
+                        },
+                        new
+                        {
+                            Id = 17L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 141, DateTimeKind.Local).AddTicks(612),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Ogun",
+                            StateCode = "17"
+                        },
+                        new
+                        {
+                            Id = 18L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 141, DateTimeKind.Local).AddTicks(6239),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Ondo",
+                            StateCode = "18"
+                        },
+                        new
+                        {
+                            Id = 19L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 142, DateTimeKind.Local).AddTicks(1345),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Oyo",
+                            StateCode = "19"
+                        },
+                        new
+                        {
+                            Id = 20L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 144, DateTimeKind.Local).AddTicks(9542),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Plateau",
+                            StateCode = "20"
+                        },
+                        new
+                        {
+                            Id = 21L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 147, DateTimeKind.Local).AddTicks(7935),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Rivers",
+                            StateCode = "21"
+                        },
+                        new
+                        {
+                            Id = 22L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 148, DateTimeKind.Local).AddTicks(7133),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Sokoto",
+                            StateCode = "22"
+                        },
+                        new
+                        {
+                            Id = 23L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 149, DateTimeKind.Local).AddTicks(3799),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Abia",
+                            StateCode = "23"
+                        },
+                        new
+                        {
+                            Id = 24L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 153, DateTimeKind.Local).AddTicks(6040),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Edo",
+                            StateCode = "24"
+                        },
+                        new
+                        {
+                            Id = 25L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 154, DateTimeKind.Local).AddTicks(5556),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Enugu",
+                            StateCode = "25"
+                        },
+                        new
+                        {
+                            Id = 26L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 155, DateTimeKind.Local).AddTicks(1758),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Jigawa",
+                            StateCode = "26"
+                        },
+                        new
+                        {
+                            Id = 27L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 158, DateTimeKind.Local).AddTicks(2210),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Kebbi",
+                            StateCode = "27"
+                        },
+                        new
+                        {
+                            Id = 28L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 159, DateTimeKind.Local).AddTicks(1112),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Kogi",
+                            StateCode = "28"
+                        },
+                        new
+                        {
+                            Id = 29L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 161, DateTimeKind.Local).AddTicks(3872),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Osun",
+                            StateCode = "29"
+                        },
+                        new
+                        {
+                            Id = 30L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 162, DateTimeKind.Local).AddTicks(3422),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Taraba",
+                            StateCode = "30"
+                        },
+                        new
+                        {
+                            Id = 31L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 163, DateTimeKind.Local).AddTicks(1040),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Yobe",
+                            StateCode = "31"
+                        },
+                        new
+                        {
+                            Id = 32L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 163, DateTimeKind.Local).AddTicks(8051),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Bayelsa",
+                            StateCode = "32"
+                        },
+                        new
+                        {
+                            Id = 33L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 178, DateTimeKind.Local).AddTicks(3468),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Ebonyi",
+                            StateCode = "33"
+                        },
+                        new
+                        {
+                            Id = 34L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 179, DateTimeKind.Local).AddTicks(1053),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Ekiti",
+                            StateCode = "34"
+                        },
+                        new
+                        {
+                            Id = 35L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 179, DateTimeKind.Local).AddTicks(7516),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Gombe",
+                            StateCode = "35"
+                        },
+                        new
+                        {
+                            Id = 36L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 180, DateTimeKind.Local).AddTicks(3105),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Nassarawa",
+                            StateCode = "36"
+                        },
+                        new
+                        {
+                            Id = 37L,
+                            CreatedBy = "System",
+                            CreatedDate = new DateTime(2024, 3, 9, 10, 24, 0, 180, DateTimeKind.Local).AddTicks(9427),
+                            IPAddress = "192.168.8.193",
+                            IsActive = false,
+                            Name = "Zamfara",
+                            StateCode = "37"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -798,13 +1375,6 @@ namespace MarketPlace.Data.Migrations
                     b.Navigation("ProductBrand");
                 });
 
-            modelBuilder.Entity("MarketPlace.Data.Domains.State", b =>
-                {
-                    b.HasOne("MarketPlace.Data.Domains.State", null)
-                        .WithMany("States")
-                        .HasForeignKey("StateId");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("MarketPlace.Data.Domains.ApplicationRole", null)
@@ -883,11 +1453,6 @@ namespace MarketPlace.Data.Migrations
                     b.Navigation("ProductCategories");
 
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("MarketPlace.Data.Domains.State", b =>
-                {
-                    b.Navigation("States");
                 });
 #pragma warning restore 612, 618
         }

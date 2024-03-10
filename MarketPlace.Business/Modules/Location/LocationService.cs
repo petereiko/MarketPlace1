@@ -1,5 +1,6 @@
 ﻿using MarketPlace.Data;
 using MarketPlace.Data.DataObjects.Common;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -21,16 +22,17 @@ namespace MarketPlace.Business.Modules.Location
             _logger = logger;
         }
 
-        public async Task<List<IdName>> FetchStates(long CountryId)
+        public async Task<List<SelectListItem>> FetchStates()
         {
-            return await _context.States.AsNoTracking().Where(x => x.CountryId == CountryId)
-                .Select(x => new IdName
+            return await _context.States.AsNoTracking()
+                .Select(s => new SelectListItem
                 {
-                    Id = x.Id,
-                    Name = x.Name
-                })
-                .OrderBy(x => x.Name).ToListAsync();
+                    Text = s.Name,
+                    Value = s.Id.ToString()
+                }).ToListAsync();
         }
+
+        
 
     }
 }

@@ -10,7 +10,10 @@ namespace MarketPlace.Data.DataObjects.KycModels
     {
         public string City { get; set; }
         public long? StateId { get; set; }
-        public long? CountryId { get; set; }
         public string ResidentialAddress { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
     }
 }

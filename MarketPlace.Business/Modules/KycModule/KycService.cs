@@ -1,4 +1,5 @@
 ﻿using MarketPlace.Business.Modules.Auth;
+using MarketPlace.Business.Modules.Location;
 using MarketPlace.Data;
 using MarketPlace.Data.DataObjects.ApplicationConfig;
 using MarketPlace.Data.DataObjects.KycModels;
@@ -23,13 +24,15 @@ namespace MarketPlace.Business.Modules.KycModule
         private readonly IAuthUser _authUser;
         private readonly AppSetting _appSetting;
         private readonly IHttpContextAccessor _contextAccessor;
-        public KycService(ApplicationDbContext context, ILogger<KycService> logger, IAuthUser authUser, IOptions<AppSetting> appSetting, IHttpContextAccessor contextAccessor)
+        private readonly ILocationService _locationService;
+        public KycService(ApplicationDbContext context, ILogger<KycService> logger, IAuthUser authUser, IOptions<AppSetting> appSetting, IHttpContextAccessor contextAccessor, ILocationService locationService)
         {
             _context = context;
             _logger = logger;
             _authUser = authUser;
             _appSetting = appSetting.Value;
             _contextAccessor = contextAccessor;
+            _locationService = locationService;
         }
 
         public async Task<KycViewModel> Get()
@@ -46,7 +49,7 @@ namespace MarketPlace.Business.Modules.KycModule
                     DateOfBirth = kyc.DateOfBirth,
                     Id = kyc.Id,
                     PassportName = kyc.PassportName,
-                    Phone = kyc.Phone,
+                    Phone = kyc.User.PhoneNumber,
                     ResidentialAddress = kyc.ResidentialAddress,
                     User = new Data.DataObjects.Auth.ApplicationUserViewModel
                     {
@@ -62,7 +65,8 @@ namespace MarketPlace.Business.Modules.KycModule
                     },
                     FirstName = kyc.FirstName,
                     LastName = kyc.LastName,
-                    UserId = kyc.UserId
+                    UserId = kyc.UserId,
+                     Email= user.Email
                 };
                 if (kyc.State != null)
                     model.State = new()
@@ -71,6 +75,7 @@ namespace MarketPlace.Business.Modules.KycModule
                         Name = kyc.State.Name
                     };
             }
+            model.States = await _locationService.FetchStates();
             return model;
         }
 
@@ -120,6 +125,8 @@ namespace MarketPlace.Business.Modules.KycModule
                 var kyc = await _context.Kycs.FirstOrDefaultAsync(x => x.UserId == _authUser.UserId);
                 if (kyc != null)
                 {
+                    kyc.FirstName = model.FirstName.Trim();
+                    kyc.LastName = model.LastName.Trim();
                     if (!string.IsNullOrEmpty(model.City))
                         kyc.City = model.City.Trim();
                     if (!string.IsNullOrEmpty(model.ResidentialAddress))
@@ -128,6 +135,8 @@ namespace MarketPlace.Business.Modules.KycModule
                         kyc.StateId = model.StateId;
                     kyc.LastModified = DateTime.Now;
                     kyc.ModifiedBy = _authUser.UserId;
+
+                    if(string.IsNullOrEmpty(kyc.User.PhoneNumber))
                     await _context.SaveChangesAsync();
                     result = true;
                 }

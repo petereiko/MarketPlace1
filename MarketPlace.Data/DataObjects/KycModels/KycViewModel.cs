@@ -18,6 +18,7 @@ namespace MarketPlace.Data.DataObjects.KycModels
         public string PassportName { get; set; }
         public string DateOfBirth { get; set; }
         public string Phone { get; set; }
+        public string Email { get; set; }
         public IdName State { get; set; }
         public string City { get; set; }
         public IdName Country { get; set; }
@@ -26,6 +27,6 @@ namespace MarketPlace.Data.DataObjects.KycModels
         public long Id { get; set; }
         public ApplicationUserViewModel User { get; set; }
 
-        public List<SelectListItem> Countries { get; set; } = new List<SelectListItem>();
+        public List<SelectListItem> States { get; set; } = new List<SelectListItem>();
     }
 }

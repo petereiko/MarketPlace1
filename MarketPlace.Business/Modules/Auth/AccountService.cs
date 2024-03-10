@@ -79,7 +79,17 @@ namespace MarketPlace.Business.Modules.Auth
                     string referralLink = baseUrl + "?code=" + user.MyReferralCode;
 
                     var kyc = await _context.Kycs.AsNoTracking().FirstOrDefaultAsync(x => x.UserId == user.Id);
-
+                    if (kyc == null)
+                    {
+                        kyc = new()
+                        {
+                            UserId = user.Id,
+                            CreatedDate = DateTime.Now,
+                            IsActive = true
+                        };
+                        _context.Kycs.Add(kyc);
+                        await _context.SaveChangesAsync();
+                    }
                     result = new LoginResponse
                     {
                         ApplicationUser = new ApplicationUserViewModel

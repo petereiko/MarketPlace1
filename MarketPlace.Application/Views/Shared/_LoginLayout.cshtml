@@ -2,33 +2,42 @@
 
 <html>
 <head>
+    <title>@ViewData["Title"] - MarketPlace Application</title>
+    <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MarketPlace.Application</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/MarketPlace.Application.styles.css" asp-append-version="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Meta -->
+    <meta name="description" content="The Market Place Team" />
+    <meta name="author" content="The Market Place Team" />
+    <link rel="canonical" href="https://www.bootstrap.gallery/">
+    <meta property="og:url" content="https://www.bootstrap.gallery">
+    <meta property="og:title" content="The Market Place Team">
+    <meta property="og:description" content="The Market Place Team">
+    <meta property="og:type" content="Website">
+    <meta property="og:site_name" content="The Market Place Team">
+    <link rel="shortcut icon" href="~/assets/images/favicon.svg" />
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css" />
+    <!-- Bootstrap font icons css -->
+    <link rel="stylesheet" href="~/assets/fonts/bootstrap/bootstrap-icons.css" />
+    <!-- Main css -->
+    <link rel="stylesheet" href="~/assets/css/main.min.css" />
+    <!-- Login css -->
+    <link rel="stylesheet" href="~/assets/css/login.css" />
+
+    <style rel="stylesheet" type="text/css">
+            .form-control {
+            border: 1px solid #c8d0da;
+            color: #232629;
+            background-color: #fff;
+             }
+    </style>
 </head>
-<body>
-    <div class="row">
-        <div class="col-md-5" style="padding-left:5%; padding-top:5%">
-            @RenderBody()
-        </div>
-       <div class="col-md-7" style="padding-top:13%; padding-left:3%">
-           <h1>The Market Place</h1>
-           <h5>BUY AND SELL PRODUCTS HERE NO MATTER THE DISTANCE</h5>
-           <button class="btn btn-info" style="background-color:transparent; color:black; border:1px solid black">Learn More &raquo;</button>
-           <br /><br />
-           <div style="color:black; font-size:12px; background-color:whitesmoke; border:1px solid whitesmoke; width:60%; padding:5px">
-                FOR HELP KINDLY CALL THE FOLLOWING NUMBERS:<br />
-                +2347068352430, +2348025316751, +44 7471 240940,<br />
-                08077440128, 08077440136, 08077440139
-           </div>
-       </div>
-    </div>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+<body class="login-container">
+	<!-- Login box start -->
+	<div class="container">
+		@RenderBody()
+	</div>
+	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

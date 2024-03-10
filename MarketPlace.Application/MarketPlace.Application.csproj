@@ -36,4 +36,35 @@
     <Folder Include="wwwroot\lib\jquery\dist\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\.DS_Store" />
+    <None Include="wwwroot\assets\.DS_Store" />
+    <None Include="wwwroot\assets\css\.DS_Store" />
+    <None Include="wwwroot\assets\fonts\.DS_Store" />
+    <None Include="wwwroot\assets\fonts\bootstrap\.DS_Store" />
+    <None Include="wwwroot\assets\images\.DS_Store" />
+    <None Include="wwwroot\assets\images\browser\.DS_Store" />
+    <None Include="wwwroot\assets\images\cards\.DS_Store" />
+    <None Include="wwwroot\assets\images\flags\.DS_Store" />
+    <None Include="wwwroot\assets\images\food\.DS_Store" />
+    <None Include="wwwroot\assets\js\.DS_Store" />
+    <None Include="wwwroot\assets\vendor\.DS_Store" />
+    <None Include="wwwroot\assets\vendor\apex\.DS_Store" />
+    <None Include="wwwroot\assets\vendor\apex\custom\.DS_Store" />
+    <None Include="wwwroot\assets\vendor\apex\custom\graphs\.DS_Store" />
+    <None Include="wwwroot\assets\vendor\apex\custom\profile\.DS_Store" />
+    <None Include="wwwroot\assets\vendor\calendar\.DS_Store" />
+    <None Include="wwwroot\assets\vendor\calendar\css\.DS_Store" />
+    <None Include="wwwroot\assets\vendor\circliful\.DS_Store" />
+    <None Include="wwwroot\assets\vendor\datatables\.DS_Store" />
+    <None Include="wwwroot\assets\vendor\datatables\custom\.DS_Store" />
+    <None Include="wwwroot\assets\vendor\jvectormap\.DS_Store" />
+    <None Include="wwwroot\assets\vendor\jvectormap\custom\.DS_Store" />
+    <None Include="wwwroot\assets\vendor\morris\.DS_Store" />
+    <None Include="wwwroot\assets\vendor\morris\custom\.DS_Store" />
+    <None Include="wwwroot\assets\vendor\newsticker\.DS_Store" />
+    <None Include="wwwroot\assets\vendor\overlay-scroll\.DS_Store" />
+    <None Include="wwwroot\assets\vendor\particles\.DS_Store" />
+  </ItemGroup>
+
 </Project>

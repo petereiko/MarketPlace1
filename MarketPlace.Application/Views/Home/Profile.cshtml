@@ -78,10 +78,19 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Full Name</p>
+                                <p class="mb-0">First Name</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0"><input type="text" value="@Model.FirstName @Model.LastName" readonly class="form-control" /></p>
+                                <p class="text-muted mb-0"><input asp-for="FirstName" type="text" class="form-control" /></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Last Name</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0"><input asp-for="LastName" type="text" class="form-control" /></p>
                             </div>
                         </div>
                         <hr>
@@ -90,7 +99,7 @@
                                 <p class="mb-0">Email</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0"><input type="email" value="@Model.User.Email" class="form-control" readonly /> </p>
+                                <p class="text-muted mb-0"><input type="email" asp-for="Email" class="form-control" readonly /> </p>
                             </div>
                         </div>
                         <hr>
@@ -99,11 +108,11 @@
                                 <p class="mb-0">Phone</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0"><input type="text" value="@Model.Phone" readonly class="form-control" /></p>
+                                <p class="text-muted mb-0"><input type="text" asp-for="Phone" class="form-control" /></p>
                             </div>
                         </div>
                         <hr />
-                        
+
                         <hr />
                         <div class="row">
                             <div class="col-sm-3">
@@ -111,16 +120,10 @@
                             </div>
                             <div class="col-sm-9">
                                 <p class="text-muted mb-0">
-                                    @if (Model.State!=null)
-                                    {
-                                        <input type="text" readonly class="form-control" value="@Model.State.Name" />
-                                    }
-                                    else
-                                    {
-                                        <select class="form-control" asp-for="State.Id">
-                                            <option>Select State</option>
-                                        </select>
-                                    }
+                                    <select class="form-control" asp-for="State.Id" asp-items="Model.States">
+                                        <option>Select State</option>
+                                    </select>
+
                                 </p>
                             </div>
                         </div>
@@ -166,37 +169,15 @@
 @section Scripts {
     <script>
 
-        function FetchStates(e) {
-            console.log(e.id);
-            let url = '@Url.Action("FetchStates", "Location")?CountryId=' + e.value;
-            console.log(url);
-            if (e.value != '') {
-                $.ajax({
-                    url: url,
-                    type: 'GET',
-                    dataType: 'JSON',
-                    success: function (response) {
-                        console.log(response);
-                        let html = '<option>Select State</option>'
-                        $.each(response, function (i, v) {
-                            html += '<option value="' + v.id + '">' + v.name + '</option>';
-                        });
-                        $('#State_Id').html(html);
-                    },
-                    error: function (err) {
-
-                    }
-                });
-            }
-
-        }
-
         function SaveProfile(e) {
             let obj = {
                 "City": $('#city').val(),
                 "StateId": $('#State_Id').val(),
                 "CountryId": $('#Country_Id').val(),
-                "ResidentialAddress": $('#address').val()
+                "ResidentialAddress": $('#address').val(),
+                "FirstName": $('#FirstName').val(),
+                "LastName": $('#LastName').val(),
+                "Phone":$('#Phone').val()
             };
 
             console.log(obj);
@@ -209,7 +190,7 @@
                 success: function (response) {
                     swal({
                         title: "Good job!",
-                        text: "You clicked the button!",
+                        text: response.message,
                         icon: "success",
                         button: "Ok!",
                     });

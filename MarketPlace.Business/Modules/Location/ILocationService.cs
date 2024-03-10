@@ -1,4 +1,5 @@
 ﻿using MarketPlace.Data.DataObjects.Common;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace MarketPlace.Business.Modules.Location
 {
     public interface ILocationService
     {
-        Task<List<IdName>> FetchStates(long CountryId);
+        Task<List<SelectListItem>> FetchStates();
     }
 }

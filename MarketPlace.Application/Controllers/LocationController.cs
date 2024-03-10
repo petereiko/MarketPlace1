@@ -11,12 +11,5 @@ namespace MarketPlace.Application.Controllers
         {
             _service = service;
         }
-
-        [HttpGet]
-        public async Task<IActionResult> FetchStates(long CountryId)
-        {
-            var result = await _service.FetchStates(CountryId);
-            return Json(result);
-        }
     }
 }
